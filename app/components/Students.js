@@ -9,15 +9,15 @@ class Students extends React.Component{
     this.props.getStudents()
   }
   render(){
-    const allStudents = this.props.students
-    console.log('what is allstudents', allStudents)
+    const allStudents = this.props.studentState.allStudents
+
     return(
       <main>
         <h1>All Students</h1>
         <div>
           {allStudents.map((current) =>{
             return(
-              <div id = {current.id}>
+              <div key = {current.id}>
               {current.firstName} {current.lastName}
               <img src ={current.imageUrl}/>
               </div>
@@ -32,7 +32,7 @@ class Students extends React.Component{
 }
 
 const mapState = (state) =>({
-  students:state.students
+  studentState:state.studentState
 })
 
 const mapDispatch= (dispatch) =>({
