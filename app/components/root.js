@@ -1,16 +1,24 @@
 import React from 'react'
-
+import{HashRouter, Route, Link} from 'react-router-dom'
+import Main from './Main'
+import Students from './Students'
 const Root = () => {
   return (
-    <div>
+    <HashRouter>
       <nav>
         Welcome!
+        <Link to ='/'> Return Home</Link>
+      <Link to = '/students'>Students</Link>
+      {/* <Link to = '/campuses'>Campuses</Link>
+      <Link to = '/addNewStudent'>Add New Student</Link>
+      <Link to = '/AddCampus'>Add New Campus</Link> */}
       </nav>
-      <main>
-        <h1>Welcome to the Margaret Hamilton Academy of JavaScript!</h1>
-        <p>This seems like a nice place to get started with some Routes!</p>
-      </main>
-    </div>
+        <div>
+        <Route path = '/' component = {Main} />
+        <Route exact path = '/students' component = {Students} />
+        </div>
+    </HashRouter>
+
   )
 }
 

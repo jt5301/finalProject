@@ -1,7 +1,7 @@
-'use strict'
-
 const router = require('express').Router()
 
+router.use('/campuses',require('./campusRoutes'))
+router.use('/students',require('./studentRoutes'))
 // Your routes go here!
 // NOTE: Any routes that you put here are ALREADY mounted on `/api`
 // You can put all routes in this file HOWEVER,
@@ -23,5 +23,6 @@ router.use((req, res, next) => {
   err.status = 404
   next(err)
 })
+
 
 module.exports = router

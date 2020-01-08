@@ -1,7 +1,10 @@
 'use strict'
-
+const students = require('./models/students')
+const campuses = require('./models/campuses')
 const db = require('./database')
 
+students.belongsTo(campuses)
+campuses.hasMany(students)
 // The purpose of this module is to bring your Sequelize instance (`db`) together
 // with your models (which you should define in separate modules in this directory).
 // Example:
@@ -17,5 +20,7 @@ const db = require('./database')
 
 module.exports = {
   // Include your models in this exports object as well!
-  db
+  db,
+  students,
+  campuses
 }
