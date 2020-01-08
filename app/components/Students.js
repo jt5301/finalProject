@@ -1,28 +1,42 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import getAllStudents from
+import {getAllStudents} from '../store'
 
 
 class Students extends React.Component{
 
   componentDidMount(){
-    let allStudents =
+    this.props.getStudents()
   }
   render(){
+    const allStudents = this.props.students
+    console.log('what is allstudents', allStudents)
     return(
-      <div>
+      <main>
+        <h1>All Students</h1>
+        <div>
+          {allStudents.map((current) =>{
+            return(
+              <div id = {current.id}>
+              {current.firstName} {current.lastName}
+              <img src ={current.imageUrl}/>
+              </div>
+            )
+          })}
 
-      </div>
+        </div>
+
+      </main>
     )
   }
 }
 
-const mapStateToProps = () =>{
+const mapState = (state) =>({
+  students:state.students
+})
 
-}
+const mapDispatch= (dispatch) =>({
+  getStudents: () =>{dispatch(getAllStudents())}
+})
 
-const mapDispatchToProps = () =>{
-
-}
-
-export default connect (mapStateToProps,mapDispatchToProps)(Students)
+export default connect (mapState,mapDispatch)(Students)
